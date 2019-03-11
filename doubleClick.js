@@ -1,12 +1,8 @@
 (function IIFE() {
-  console.info(rxjs);
   const { fromEvent, operators } = rxjs;
   const { map, filter, delay, bufferWhen, debounceTime } = operators;
   const doubleClickBtn = document.querySelector("#doubleClick");
-  const tripleClickBtn = document.querySelector("#tripleClick");
   const doubleClick$ = fromEvent(doubleClickBtn, "click");
-  const tripleClick$ = fromEvent(tripleClickBtn, "click");
-  // const myInterval = interval(100);
   /**
    *
    * {....->......-> .. -> ...->.... -> .......->..->} ( Stream of Clicks)
@@ -34,5 +30,4 @@
   bufferedClicksFilteredStream.pipe(delay(1000)).subscribe(() => {
     document.querySelector("#infoText").innerHTML = "-";
   });
-  tripleClick$.subscribe(item => console.info(item));
 })();
